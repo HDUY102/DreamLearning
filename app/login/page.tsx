@@ -24,7 +24,6 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import HeaderNav from "../components/HeaderNav";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/img/logo.png";
@@ -36,8 +35,9 @@ const formSchema = z.object({
     message: "Password must be at least 3 characters.",
   }),
 });
+import { useRouter } from "next/navigation";
 
-const Register = () => {
+const Login = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +47,27 @@ const Register = () => {
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-  }
+  };
+  const router = useRouter();
+
+  const handleSubmit = async (event:any) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const username = formData.get("username");
+      const password = formData.get("password");
+      const res = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+      });
+      const { success } = await res.json();
+      if (success) { 
+        router.push("/admin");
+        router.refresh();
+      } else {
+        alert("Login failed");
+      }
+  };
+
   return (
     <div>
       <div>
@@ -66,11 +86,11 @@ const Register = () => {
         {/* Page Header END */}
       </div>
       <p className="text-center mt-20 text-emerald-800"><b>DREAM LEARNING</b></p>
-      <p className="text-center mt-2">Đăng ký tài khoản Dream Learning <br></br>để kết nối với ứng dụng Dream Learning</p>
+      <p className="text-center mt-2">Đăng nhập tài khoản Dream Learning <br></br>để kết nối với ứng dụng Dream Learning</p>
       <div className="flex justify-center">
         <div className="flex justify-center mt-8 border border-y-2 border-x-2 w-[400px]">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="m-4">
+            <form onSubmit={handleSubmit} className="m-4">
               <FormField
                 control={form.control}
                 name="username"
@@ -101,7 +121,7 @@ const Register = () => {
                         className="w-72"
                       />
                     </FormControl>
-                    <FormDescription className="text-center">Đăng ký tài khoản mới.</FormDescription>
+                    <FormDescription>Đăng nhập tài khoản Dream Learning.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -114,7 +134,7 @@ const Register = () => {
         </div>
       </div>
       <p className='mt-4 text-center'>
-        Bạn đã có tài khoản? <a className="hover:text-blue-600" href={'/login'}><u>Đăng Nhập</u></a>
+        Bạn chưa có tài khoản? <a className="hover:text-blue-600" href={'/register'}><u>Đăng Ký</u></a>
       </p>
       <div>
         <hr className="mb-2 mt-3"></hr>
@@ -123,7 +143,7 @@ const Register = () => {
         </footer>
       </div>
     </div>
-  );
+  )
 };
 
-export default Register;
+export default Login;

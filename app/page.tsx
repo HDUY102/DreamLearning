@@ -4,12 +4,11 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link";
 import { useState } from "react";
 import clsx from "clsx";
+import HeaderNav from "./components/HeaderNav";
 export default function Home() {
   return (
     <div>
-      <Link href="/register">
-        <Button variant="ghost">Register</Button>  
-      </Link>
+      <HeaderNav/>
       <Link href="/FileUpload">
         <Button variant="ghost">Upload File</Button>  
       </Link>
