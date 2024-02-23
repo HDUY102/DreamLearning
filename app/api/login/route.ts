@@ -1,6 +1,6 @@
 import { SignJWT } from "jose";
 import { NextRequest, NextResponse } from "next/server";
-import { getJwtSecretKey } from "@/app/lib/auth";
+import {getJwtSecretKey} from "@/lib/auth"
 export async function POST(request:NextRequest) {
   const body = await request.json();
   if (body.username === "admin" && body.password === "admin") {

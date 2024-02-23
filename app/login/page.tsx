@@ -14,19 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/img/logo.png";
+import { useRouter } from "next/navigation";
+import { PasswordInput } from "@/components/ui/password-input";
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -35,7 +28,6 @@ const formSchema = z.object({
     message: "Password must be at least 3 characters.",
   }),
 });
-import { useRouter } from "next/navigation";
 
 const Login = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -99,7 +91,7 @@ const Login = () => {
                     <FormLabel>Username</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="username"
+                        placeholder="Username"
                         {...field}
                         className="w-72"
                       />
@@ -115,11 +107,7 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="password"
-                        {...field}
-                        className="w-72"
-                      />
+                      <PasswordInput {...field} placeholder="Password"/>
                     </FormControl>
                     <FormDescription>Đăng nhập tài khoản Dream Learning.</FormDescription>
                     <FormMessage />
