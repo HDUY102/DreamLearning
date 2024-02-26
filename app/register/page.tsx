@@ -28,6 +28,8 @@ import HeaderNav from "../components/HeaderNav";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/img/logo.png";
+import { PasswordInput } from "@/components/ui/password-input";
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -71,6 +73,7 @@ const Register = () => {
         <div className="flex justify-center mt-8 border border-y-2 border-x-2 w-[400px]">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="m-4">
+              <FormDescription className="text-center">Đăng ký tài khoản mới</FormDescription>
               <FormField
                 control={form.control}
                 name="username"
@@ -79,9 +82,9 @@ const Register = () => {
                     <FormLabel>Username</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="username"
+                        placeholder="Username"
                         {...field}
-                        className="w-72"
+                        className="w-[91%]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -95,13 +98,8 @@ const Register = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="password"
-                        {...field}
-                        className="w-72"
-                      />
+                      <PasswordInput {...field} placeholder="Password"/>
                     </FormControl>
-                    <FormDescription className="text-center">Đăng ký tài khoản mới.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}

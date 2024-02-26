@@ -9,7 +9,6 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ className,...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false)
     return (
-    //   <div className="flex">
           <Input 
             type={showPassword ? "text":"password"} 
             suffix={
@@ -19,7 +18,6 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
                 )
             } 
             className={className} {...props} ref={ref}/>
-    //   </div>
     )
   }
 )

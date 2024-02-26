@@ -10,7 +10,7 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ suffix, className, type, ...props }, ref) => {
     return (
-      <div className="flex items-center gap-2">
+      <div className="gap-2 items-center flex">
         <input
           type={type}
           className={cn(

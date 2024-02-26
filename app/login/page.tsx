@@ -83,6 +83,7 @@ const Login = () => {
         <div className="flex justify-center mt-8 border border-y-2 border-x-2 w-[400px]">
           <Form {...form}>
             <form onSubmit={handleSubmit} className="m-4">
+              <FormDescription className="text-center">Đăng nhập tài khoản Dream Learning</FormDescription>
               <FormField
                 control={form.control}
                 name="username"
@@ -93,7 +94,7 @@ const Login = () => {
                       <Input
                         placeholder="Username"
                         {...field}
-                        className="w-72"
+                        className="w-[91%]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -109,7 +110,6 @@ const Login = () => {
                     <FormControl>
                       <PasswordInput {...field} placeholder="Password"/>
                     </FormControl>
-                    <FormDescription>Đăng nhập tài khoản Dream Learning.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
