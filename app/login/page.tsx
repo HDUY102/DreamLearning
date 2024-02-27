@@ -94,7 +94,7 @@ const Login = () => {
                       <Input
                         placeholder="Username"
                         {...field}
-                        className="w-[91%]"
+                        className="w-[90%]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -115,7 +115,7 @@ const Login = () => {
                 )}
               />
               <Button className="mt-4 bg-emerald-500 w-72" type="submit">
-                Submit
+                Đăng Nhập
               </Button>
             </form>
           </Form>
@@ -127,7 +127,7 @@ const Login = () => {
       <div>
         <hr className="mb-2 mt-3"></hr>
         <footer className="p-4 text-center text-gray-400">
-          <i>Dream <span className="text-emerald-500 ">Learning</span></i>{" "} &copy; 2024 Accompany your dreams
+          <i>Dream <span className="text-emerald-500 ">Learning</span></i>{" "} &copy; {new Date().getFullYear()} Accompany your dreams
         </footer>
       </div>
     </div>

@@ -14,24 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
-import HeaderNav from "../components/HeaderNav";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/img/logo.png";
 import { PasswordInput } from "@/components/ui/password-input";
+import { useRouter } from 'next/navigation';
 
-const formSchema = z.object({
-  username: z.string().min(2, {
+const RegisterSchema = z.object({
+  username: z.string().min(3, {
     message: "Username must be at least 2 characters.",
   }),
   password: z.string().min(3, {
@@ -40,15 +30,33 @@ const formSchema = z.object({
 });
 
 const Register = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       username: "",
-      password: "",
+      password: ""
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  const router = useRouter();
+
+  const onSubmit= async (value: z.infer<typeof RegisterSchema>) => {
+    const respone = await fetch("http://localhost:3000/api/register",{
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: value.username,
+        password: value.password
+      })
+    })
+    if(respone.ok){
+      alert("Đăng ký thành công")
+      router.push('/login')
+    }
+    else {
+      console.error('Error during registration:', respone.statusText);
+    } 
   }
   return (
     <div>
@@ -84,7 +92,7 @@ const Register = () => {
                       <Input
                         placeholder="Username"
                         {...field}
-                        className="w-[91%]"
+                        className="w-[90%]"
                       />
                     </FormControl>
                     <FormMessage />
@@ -105,7 +113,7 @@ const Register = () => {
                 )}
               />
               <Button className="mt-4 bg-emerald-500 w-72" type="submit">
-                Submit
+                Đăng Ký
               </Button>
             </form>
           </Form>
@@ -117,7 +125,7 @@ const Register = () => {
       <div>
         <hr className="mb-2 mt-3"></hr>
         <footer className="p-4 text-center text-gray-400">
-          <i>Dream <span className="text-emerald-500 ">Learning</span></i>{" "} &copy; 2024 Accompany your dreams
+          <i>Dream <span className="text-emerald-500 ">Learning</span></i>{" "} &copy; {new Date().getFullYear()} Accompany your dreams
         </footer>
       </div>
     </div>

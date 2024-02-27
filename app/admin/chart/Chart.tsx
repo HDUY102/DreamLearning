@@ -78,7 +78,7 @@ const Chart = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Tổng doanh thu</h2>
-      <ResponsiveContainer width="70%" height="90%">
+      <ResponsiveContainer width="100%" height="90%">
         <LineChart
           width={500}
           height={300}

@@ -9,9 +9,7 @@ const MenuLink = ({ item }) => {
   return (
     <Link
       href={item.path}
-      className={`${styles.container} ${
-        pathname === item.path && styles.active
-      }`}
+      className={`${styles.container} `}
     >
       {item.icon}
       {item.title}
