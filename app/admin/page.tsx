@@ -1,9 +1,9 @@
 import React from "react";
-import Sidebar from "@/app/admin/sidebar/Sidebar";
+import Sidebar from "@/app/admin/sidebar/AdminSidebar";
 import styles from "@/app/admin/dashboard.module.css";
-import Search from "./search/Search";
-import LayoutCard from "./layoutCard/LayoutCard";
-import Chart from "./chart/Chart";
+import Search from "@/app/layOut/search/Search";
+import LayoutCard from "@/app/layOut/layoutCard/LayoutCard";
+import Chart from "@/app/layOut/chart/Chart";
 const page = () => {
   return (
     <div className={styles.container}>

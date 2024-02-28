@@ -1,6 +1,6 @@
 import React from "react";
 import { MdSupervisedUserCircle } from "react-icons/md";
-import styles from "./LayoutCard.module.css";
+import styles from "@/app/layOut/layoutCard/LayoutCard.module.css";
 
 const cards = [
   {

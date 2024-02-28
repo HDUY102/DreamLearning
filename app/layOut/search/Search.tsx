@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/app/admin/search/Search.module.css";
+import styles from "@/app/layOut/search/Search.module.css";
 
 import { MdSearch } from "react-icons/md";
 

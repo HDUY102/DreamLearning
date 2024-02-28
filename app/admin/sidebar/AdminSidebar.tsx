@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/app/admin/sidebar/Sidebar.module.css";
+import styles from "@/app/admin/sidebar/AdminSidebar.module.css";
 import {
   MdLogout,
   MdDashboard,
@@ -11,7 +11,8 @@ import {
   MdPeople,
   MdOutlineSettings,
   MdHelpCenter,
-  MdListAlt
+  MdListAlt,
+  MdCalendarMonth 
 } from "react-icons/md";
 import MenuLink from "./menuLink/MenuLink";
 // import { signOut } from '@/auth';
@@ -26,17 +27,17 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
-        title: "Student",
+        title: "Học sinh",
         path: "/dashboard/student",
         icon: <MdSupervisedUserCircle />,
       },
       {
-        title: "Teacher",
-        path: "/dashboard/teacher",
-        icon: <MdShoppingBag />,
+        title: "Lịch kế hoạch",
+        path: "/admin/teacher",
+        icon: <MdCalendarMonth />,
       },
       {
-        title: "Courses",
+        title: "Kho bài giảng",
         path: "/dashboard/courses",
         icon: <MdListAlt />,
       },
